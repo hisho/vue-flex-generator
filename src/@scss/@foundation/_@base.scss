@@ -1,0 +1,38 @@
+@import "./reset";
+@import "./_animation.scss";
+
+:root {
+  //htmlにブレークポイント表示用
+  --breakpoint-xs: #{px(map-get($breakpoints, xs ))};
+  --breakpoint-sm: #{px(map-get($breakpoints, sm ))};
+  --breakpoint-md: #{px(map-get($breakpoints, md ))};
+  --breakpoint-lg: #{px(map-get($breakpoints, lg ))};
+  //フォント
+  --font-ja-sans: #{font(ja,sans)};
+  --font-ja-serif: #{font(ja,serif)};
+  --font-en-sans: #{font(en,sans)};
+  --font-en-serif: #{font(en,serif)};
+}
+
+body {
+  font-family: font(ja, sans);
+  // windowsのIE11のみメイリオにフォントを変える
+  &.ie.windows {
+    font-family: "メイリオ", Meiryo, sans-serif;
+  }
+  @at-root _:-ms-fullscreen,:root & {
+    font-family: "メイリオ", Meiryo, sans-serif;
+  }
+}
+
+.wrapper {
+  //innerがサイドタッチしないように予めスマホ時の左右padding分設定
+  max-width: px($inner-width + ($wrapper-padding * 2));
+  margin: 0 auto;
+  @if $wrapper-padding > 0 {
+    padding: 0 px($wrapper-padding) 0;
+  }
+  .inner {
+    
+  }
+}

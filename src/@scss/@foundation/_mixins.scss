@@ -1,0 +1,142 @@
+//-------------------------------------------------------------
+// INDEX
+// ・IE用のブラウザハック
+// ・ホバーの設定
+// ・テキストホバーの設定
+// ・画像ホバーの設定
+// ・メディアクエリーの設定
+// ・positionのmixin
+// ・flexのmixin
+// ・wrapperからの開放
+// ・疑似要素でpadding-top
+//-------------------------------------------------------------
+
+
+//IE用のブラウザハック
+//-------------------------------------------------------------
+@mixin iehack {
+  @at-root body.ie.windows & {
+    @content;
+  }
+  //jsを切っているIE11用のフォールバック
+  @at-root _:-ms-fullscreen, :root & {
+    @content;
+  }
+}
+
+//ホバーの設定
+//-------------------------------------------------------------
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+  @include iehack {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+//テキストホバーの設定
+//-------------------------------------------------------------
+@mixin hovertext($opacity: .7, $transition: .5s) {
+  transition: opacity $transition;
+  @include hover {
+    opacity: $opacity;
+  }
+}
+
+//画像ホバーの設定
+//-------------------------------------------------------------
+@mixin hoverimg($gizi:before) {
+  &::#{$gizi} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: transparent;
+    transition: background-color .5s;
+  }
+  @include hover {
+    &::#{$gizi} {
+      background: rgba(#fff,.5);
+    }
+  }
+}
+
+
+//メディアクエリーの設定
+//-------------------------------------------------------------
+@mixin media($breakpoint: 'sm', $key: min) {
+  @if $key == max {
+    @media (#{$key}-width: (px(map-get( $breakpoints, $breakpoint )) - .02px)) {
+      @content;}
+  }
+  @if $key == min {
+    @media (#{$key}-width: px(map-get( $breakpoints, $breakpoint ))) {
+      @content;}
+  }
+}
+
+//positionのmixin
+//-------------------------------------------------------------
+@mixin position($position: xy) {
+  position: absolute;
+  @if $position == xy {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  @if $position == x {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @if $position == y {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+//flexのmixin
+//-------------------------------------------------------------
+@mixin flex($position:xy) {
+  display: flex;
+  @if $position == xy {
+    justify-content: center;
+    align-items: center;
+  }
+  @if $position == x {
+    justify-content: center;
+  }
+  @if $position == y {
+    align-items: center;
+  }
+}
+
+//wrapperからの開放
+//-------------------------------------------------------------
+@mixin overflow($padding: null) {
+  $ispadding: $padding !=null;
+  margin-right: calc(50% - 50vw);
+  margin-left: calc(50% - 50vw);
+  @if $padding {
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+  }
+}
+
+//疑似要素でpadding-top
+//-------------------------------------------------------------
+@mixin pt($yoko: 16, $tate: 9, $gizi: before) {
+  &::#{$gizi} {
+    display: block;
+    padding-top: percentage($tate/$yoko);
+    content: '';
+  }
+}
