@@ -19,6 +19,21 @@
       <header class="header" id="header"></header>
       <article id="app" class="main">
         <h1 class="main--title">FlexBox Grid Generator</h1>
+        <section class="main--header">
+          <h2 class="main--heading">Result</h2>
+          <div class="main--content -small">
+            <ul class="row">
+              <li class="col" v-for="(card, index) in cards">
+                <section class="card">
+                  <h3 class="card--title">{{ card.title }}</h3>
+                  <p class="card--text">{{ card.text }}</p>
+                  <a class="card--button" :href="card.link" target="_blank" rel="noopener noreferrer">ボタン</a>
+                  <figure class="card--img" :style="background(index)"></figure>
+                </section>
+              </li>
+            </ul>
+          </div>
+        </section>
         <div class="main--body">
           <section class="main--content">
             <h2 class="main--heading">Entry</h2>
@@ -84,6 +99,13 @@
       .row {
         display: flex;
         flex-wrap: wrap;
+        margin-top: -20px;
+        margin-left: -10px;
+      }
+      .col {
+        margin-top: 20px;
+        margin-left: 10px;
+        width: calc(25% - 10px);
       }
     </style>
   </body>

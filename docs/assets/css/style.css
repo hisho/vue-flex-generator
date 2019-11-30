@@ -1,9 +1,1 @@
-.list {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: auto;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 0 20px;
-}
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvQHNjc3MvcGFnZS9zdHlsZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFBQTtFQUNBO0VBQUE7RUFDQTtFQUNBIiwiZmlsZSI6ImRvY3MvYXNzZXRzL2Nzcy9zdHlsZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGlzdCB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGdyaWQtdGVtcGxhdGUtcm93czogYXV0bztcbiAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiByZXBlYXQoYXV0by1maXQsIG1pbm1heCgzMDBweCwgMWZyKSk7XG4gIGdhcDogMCAyMHB4O1xuICAmLS1pdGVtIHtcblxuICB9XG59Il0sInNvdXJjZVJvb3QiOiIifQ==*/
+.list{display:-ms-grid;display:grid;-ms-grid-rows:auto;grid-template-rows:auto;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 20px}
