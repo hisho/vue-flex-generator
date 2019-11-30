@@ -61,6 +61,7 @@ mix.webpackConfig({
 });
 
 mix.copy(`src/index.html`, `${dist_path}`);
+mix.copyDirectory(`src/img`, `${dist_path}assets/img`);
 mix.disableNotifications();
 
 mix.browserSync({
