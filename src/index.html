@@ -23,7 +23,7 @@
           <h2 class="main--heading">Result</h2>
           <div class="main--content -small">
             <ul class="row">
-              <li class="col" v-for="(card, index) in cards">
+              <li class="col" v-for="(card, index) in cards" :key="card.title">
                 <section class="card">
                   <h3 class="card--title">{{ card.title }}</h3>
                   <p class="card--text">{{ card.text }}</p>
