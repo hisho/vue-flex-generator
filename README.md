@@ -1,11 +1,11 @@
-# Vue-study
-Vue.js for the first time.
+# vue-grid-generator
+# [vue-grid-generator](https://hishohub.github.io/vue-grid-generator/ "vue-grid-generator")
 
 ## install
 ```zsh
 $ npm ci
 ```
-
+***
 ## watch
 ```zsh
 $ npm start
@@ -14,7 +14,12 @@ or
 ```zsh
 $ npm run watch
 ```
-
+***
+## build
+```zsh
+$ npm run prod
+```
+***
 ## directory
 ```
 root
