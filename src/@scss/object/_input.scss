@@ -1,0 +1,22 @@
+.input {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  font-size: 1.8rem;
+  text-align: center;
+  &--title {
+    font-weight: 400;
+  }
+  &--field {
+    margin-top: 10px;
+    > input {
+      width: 100%;
+      padding: .5em;
+      font-size: 2rem;
+      font-weight: 400;
+      text-align: right;
+      background: #fafafa;
+      border: 1px solid color(bd,green);
+    }
+  }
+}

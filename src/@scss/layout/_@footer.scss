@@ -1,3 +1,6 @@
 .footer {
-  
+  height: 50px;
+  margin-top: auto;
+  background: color(bg, black);
+  @include overflow;
 }

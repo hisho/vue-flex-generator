@@ -1,0 +1,31 @@
+.code {
+  position: relative;
+  height: 208px;
+  overflow-y: auto;
+  background: color(bg,white);
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .2em .5em;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: color(text,black);
+    content: attr(data-lang);
+    background: color(bg,green);
+  }
+  &--container {
+    display: block;
+    width: 100%;
+    padding: 2em 1em 1em;
+    overflow-y: auto;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #2973b7;
+  }
+}
+
+.html-class,.css-value {
+  color: color(text,green);
+}

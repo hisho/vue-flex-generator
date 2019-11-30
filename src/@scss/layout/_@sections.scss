@@ -1,0 +1,23 @@
+.main {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  &--title {
+    font-size: 5rem;
+  }
+  &--body {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    @include overflow(ture);
+    background: color(bg,gray);
+  }
+  &--content {
+    &:not(:first-of-type) {
+      margin-top: 50px;
+    }
+  }
+  &--heading {
+    margin-bottom: 30px;
+    font-size: 3rem;
+    text-align: center;
+  }
+}

@@ -13,14 +13,21 @@ $colors: (
   text: (
     red: red,
     blue: blue,
+    black: #273849,
+    green: #4fc08d,
   ),
   bd: (
     red: #ff0000,
+    green: #4fc08d,
     blue: blue,
   ),
   bg: (
+    white: #fafafa,
     red: red,
     blue: blue,
+    gray: #f6f6f6,
+    green: #4fc08d,
+    black: #304455
   ),
   gra: linear-gradient(to bottom, red, green)
 );
@@ -76,13 +83,14 @@ $breakpoints: (
 //font-familyメーカー
 //https://saruwakakun.com/font-family
 
+
 $fonts: (
   ja: (
     sans: sans-serif,
     serif: serif,
   ),
   en: (
-    sans: sans-serif,
+    sans: ("Source Sans Pro", "Helvetica Neue", Arial, sans-serif),
     serif: serif,
   )
 );

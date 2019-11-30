@@ -1,3 +1,5 @@
 .header {
-  
+  height: 50px;
+  background: color(bg,green);
+  @include overflow;
 }

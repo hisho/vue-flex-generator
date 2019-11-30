@@ -15,7 +15,9 @@
 }
 
 body {
-  font-family: font(ja, sans);
+  font-family: font(en, sans);
+  color: color(text,black);
+  font-weight: 300;
   // windowsのIE11のみメイリオにフォントを変える
   &.ie.windows {
     font-family: "メイリオ", Meiryo, sans-serif;
@@ -26,6 +28,10 @@ body {
 }
 
 .wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   //innerがサイドタッチしないように予めスマホ時の左右padding分設定
   max-width: px($inner-width + ($wrapper-padding * 2));
   margin: 0 auto;
