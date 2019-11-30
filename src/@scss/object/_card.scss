@@ -1,0 +1,57 @@
+.card {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  height: 100%;
+  padding: 10px;
+  font-weight: 400;
+  text-align: center;
+  border: 1px solid color(bd,green);
+  &--title {
+    order: 2;
+    margin-top: 15px;
+    font-size: 2.4rem;
+    color: color(text,green);
+  }
+
+  &--text {
+    order: 3;
+    margin: 20px 0;
+    font-size: 1.6rem;
+    color: color(text,black);
+  }
+
+  &--button {
+    display: block;
+    order: 4;
+    width: 100%;
+    max-width: 150px;
+    padding: 1em;
+    margin: auto auto 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: color(text,white);
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 1px;
+    background-image: linear-gradient(to left, color(bg,green), darken(#24fe41,20%));
+    background-position: 100% 0;
+    background-size: 200% 100%;
+    border-radius: 2em;
+    transition: background-position .5s ease-out;
+    @media(hover:hover) {
+      &:hover {
+        color: #fff;
+        background-position: 0 0;
+      }
+    }
+  }
+  &--img {
+    order: 1;
+    height: 0;
+    padding-top: percentage(3/4);
+    margin: -10px -10px 0;
+    background-position: center center;
+    background-size: cover;
+  }
+}
