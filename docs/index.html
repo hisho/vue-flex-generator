@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="./assets/css/common.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/manifest.js" async></script>
+    <script src="./assets/js/vendor.js" async></script>
+    <script src="./assets/js/main.js" defer></script>
+    <link href="//fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro:300,400,600&display=swap" rel="stylesheet">
+    <title>Vueグリッドジェネレーター</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header" id="header"></header>
+      <article id="app" class="main">
+        <h1 class="main--title">FlexBox Grid Generator</h1>
+        <div class="main--body">
+          <section class="main--content">
+            <h2 class="main--heading">Entry</h2>
+            <ul class="list">
+              <li class="list--item">
+                <dl class="input">
+                  <dt class="input--title"><label for="col">横並びの数</label></dt>
+                  <dd class="input--field"><input id="col" type="number" min="1" max="10" value="3"></dd>
+                </dl>
+              </li>
+              <li class="list--item">
+                <dl class="input">
+                  <dt class="input--title"><label for="row-gap">縦の溝(px)</label></dt>
+                  <dd class="input--field"><input id="row-gap" type="number" min="1" max="50" value="20"></dd>
+                </dl>
+              </li>
+              <li class="list--item">
+                <dl class="input">
+                  <dt class="input--title"><label for="col-gap">横の溝(px)</label></dt>
+                  <dd class="input--field"><input id="col-gap" type="number" min="1" max="30" value="10"></dd>
+                </dl>
+              </li>
+            </ul>
+          </section>
+          <section class="main--content">
+            <h2 class="main--heading">Code</h2>
+            <ul class="list">
+              <li class="list--item">
+                <pre class="code" data-lang="HTML">
+                  <code class="code--container">&lt;ul class=<span class="html-class">&quot;row&quot;</span>&gt;
+  &lt;li class=<span class="html-class">&quot;col&quot;</span>&gt;1&lt;/li&gt;
+  &lt;li class=<span class="html-class">&quot;col&quot;</span>&gt;2&lt;/li&gt;
+  &lt;li class=<span class="html-class">&quot;col&quot;</span>&gt;3&lt;/li&gt;
+  &lt;li class=<span class="html-class">&quot;col&quot;</span>&gt;4&lt;/li&gt;
+  &lt;li class=<span class="html-class">&quot;col&quot;</span>&gt;5&lt;/li&gt;
+  &lt;li class=<span class="html-class">&quot;col&quot;</span>&gt;6&lt;/li&gt;
+  &lt;li class=<span class="html-class">&quot;col&quot;</span>&gt;7&lt;/li&gt;
+  &lt;li class=<span class="html-class">&quot;col&quot;</span>&gt;8&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+              </li>
+              <li class="list--item">
+                <pre class="code" data-lang="CSS">
+                  <code class="code--container">.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: <span class="css-value">-20px</span>;
+  margin-left: <span class="css-value">-10px</span>;
+}
+
+.col {
+  margin-top: <span class="css-value">20px</span>;
+  margin-left: <span class="css-value">10px</span>;
+  width: <span class="css-value">calc(14.2857% - 10px)</span>;
+} </code></pre>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </article>
+      <footer class="footer" id="footer"></footer>
+    </div>
+    <style>
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    </style>
+  </body>
+</html>
