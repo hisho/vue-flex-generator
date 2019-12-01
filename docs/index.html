@@ -42,19 +42,52 @@
               <li class="list--item">
                 <dl class="input">
                   <dt class="input--title"><label for="col">横並びの数</label></dt>
-                  <dd class="input--field"><input id="col" type="number" min="1" max="10" value="3" v-model="col"></dd>
+                  <dd class="input--field">
+                    <div class="select">
+                      <select v-model="select.col.state">
+                        <option v-for="item in select.col.list" v-bind:value="item.id" v-bind:key="item.id">{{ item.id }}</option>
+                      </select>
+                      <span class="select--result" @click="select.col.show = !select.col.show">{{ select.col.state }}</span>
+                      <div class="select--modal" v-show="select.col.show" @click="selectEv(select.col)"></div>
+                      <ul class="select--list" v-show="select.col.show">
+                        <li class="select--item" @click="selectEv(select.col,item.id)" v-for="(item,index) in select.col.list" v-bind:key="item.id" :class="{'is-active': item.id === select.col.state}">{{ item.id }}</li>
+                      </ul>
+                    </div>
+                  </dd>
                 </dl>
               </li>
               <li class="list--item">
                 <dl class="input">
                   <dt class="input--title"><label for="row-gap">縦の溝(px)</label></dt>
-                  <dd class="input--field"><input id="row-gap" type="number" min="1" max="50" value="20" v-model="rowGap"></dd>
+                  <dd class="input--field">
+                    <div class="select">
+                      <select v-model="select.rowgap.state">
+                        <option v-for="item in select.rowgap.list" v-bind:value="item.id" v-bind:key="item.id">{{ item.id }}</option>
+                      </select>
+                      <span class="select--result" @click="select.rowgap.show = !select.rowgap.show">{{ select.rowgap.state }}</span>
+                      <div class="select--modal" v-show="select.rowgap.show" @click="selectEv(select.rowgap)"></div>
+                      <ul class="select--list" v-show="select.rowgap.show">
+                        <li class="select--item" @click="selectEv(select.rowgap,item.id)" v-for="(item,index) in select.rowgap.list" v-bind:key="item.id" :class="{'is-active': item.id === select.rowgap.state}">{{ item.id }}</li>
+                      </ul>
+                    </div>
+                  </dd>
                 </dl>
               </li>
               <li class="list--item">
                 <dl class="input">
                   <dt class="input--title"><label for="col-gap">横の溝(px)</label></dt>
-                  <dd class="input--field"><input id="col-gap" type="number" min="1" max="30" value="10" v-model="colGap"></dd>
+                  <dd class="input--field">
+                    <div class="select">
+                      <select v-model="select.colgap.state">
+                        <option v-for="item in select.colgap.list" v-bind:value="item.id" v-bind:key="item.id">{{ item.id }}</option>
+                      </select>
+                      <span class="select--result" @click="select.colgap.show = !select.colgap.show">{{ select.colgap.state }}</span>
+                      <div class="select--modal" v-show="select.colgap.show" @click="selectEv(select.colgap)"></div>
+                      <ul class="select--list" v-show="select.colgap.show">
+                        <li class="select--item" @click="selectEv(select.colgap,item.id)" v-for="(item,index) in select.colgap.list" v-bind:key="item.id" :class="{'is-active': item.id === select.colgap.state}">{{ item.id }}</li>
+                      </ul>
+                    </div>
+                  </dd>
                 </dl>
               </li>
             </ul>
@@ -95,15 +128,15 @@
                   <code class="code--container">.row {
   display: flex;
   flex-wrap: wrap;
-  margin-top: <span class="css-value">-{{ rowGap }}px</span>;
-  margin-left: <span class="css-value">-{{ colGap }}px</span>;
+  margin-top: <span class="css-value">-{{ select.rowgap.state }}px</span>;
+  margin-left: <span class="css-value">-{{ select.colgap.state }}px</span>;
   <span class="comment-out">//padding部分にホバーが効かないようにする</span>
   pointer-events: none;
 }
 
 .col {
-  padding-top: <span class="css-value">{{ rowGap }}px</span>;
-  padding-left: <span class="css-value">{{ colGap }}px</span>;
+  padding-top: <span class="css-value">{{ select.rowgap.state }}px</span>;
+  padding-left: <span class="css-value">{{ select.colgap.state }}px</span>;
   width: <span class="css-value">{{ StyleWidth() }}%</span>;
 }
 
