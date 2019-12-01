@@ -13,19 +13,19 @@ export const app = new Vue({
     removeText: null,
     select: {
       col: {
-        state: `4`,
+        state: 4,
         active: false,
         show: false,
         list: collist
       },
       rowgap: {
-        state: `30`,
+        state: 30,
         active: false,
         show: false,
         list: rowgaplist
       },
       colgap: {
-        state: `20`,
+        state: 20,
         active: false,
         show: false,
         list: colgaplist
