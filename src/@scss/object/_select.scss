@@ -10,7 +10,7 @@ select {
     padding: .5em;
     font-size: 2rem;
     font-weight: 400;
-    text-align: right;
+    text-align: center;
     background: #fafafa;
     border: 1px solid color(bd, green);
   }
@@ -21,30 +21,63 @@ select {
     z-index: zindex(main);
     width: 100%;
     height: 100vh;
-    background: rgba(#000,.1);
+    background: rgba(#000,.3);
   }
   &--list {
-    position: absolute;
-    top: 100%;
-    left: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
     z-index: zindex(front);
-    width: 100%;
-    padding: 10px 0;
+    width: 350px;
+    padding: 5% 0;
     background: color(bg,white);
-    border: 1px solid color(bd,gray);
-    border-radius: 4px;
+    border-radius: 0 0 4px 4px;
+    transform: translate(-50%,-50%);
+    @include media(sm) {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: auto;
+      padding: 0;
+      transform: none;
+    }
   }
   &--item {
+    position: relative;
     padding: .5em;
     cursor: pointer;
     &:not(:last-of-type) {
       border-bottom: 1px solid color(bd,gray);
     }
+    &::before {
+      position: absolute;
+      top: 50%;
+      right: 1em;
+      display: block;
+      width: 15px;
+      height: 15px;
+      content: '';
+      background: color(bg,white);
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px color(bg, green);
+      transform: translateY(-50%);
+    }
     &.is-active {
-      color: color(text,green);
+      color: color(text,white);
+      background: color(bg,green);
+      &::before {
+        background: color(bg,green);
+        box-shadow: 0 0 0 2px color(bg, white);
+      }
     }
     @include hover {
-      color: color(text,green);
+      color: color(text,white);
+      background: color(bg,green);
+      &::before {
+        background: color(bg,green);
+        box-shadow: 0 0 0 2px color(bg, white);
+      }
     }
   }
 }
