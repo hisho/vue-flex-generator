@@ -30,10 +30,11 @@ mix.webpackConfig({
 })
 
 mix.js(`src/@js/main.js`, `${dist_path}assets/js`)
-  .extract([`vue`, `axios`])
+  .extract([`vue`, `axios`, `lodash`])
   .autoload({
     vue: [`Vue`, `window.Vue`],
-    axios: `axios`
+    axios: `axios`,
+    lodash: `_`
   });
 
 mix.sass(`src/@scss/common.scss`, `${dist_path}assets/css`)
