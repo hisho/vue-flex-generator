@@ -1,6 +1,7 @@
 import card_data from "../datas/card.json";
 const collist = [{id: 1},{id: 2},{id: 3},{id: 4},{id: 5},{id: 6},{id: 7},{id: 8},{id: 9},{id: 10}];
 const rowgaplist = [{id: 0},{id: 5},{id: 10},{id: 15},{id: 20},{id: 25},{id: 30},{id: 35},{id: 40},{id: 45},{id: 50}];
+const colgaplist = [{id: 0},{id: 5},{id: 10},{id: 15},{id: 20},{id: 25},{id: 30}];
 
 export const app = new Vue({
   el: "#app",
@@ -10,7 +11,6 @@ export const app = new Vue({
     cardtest: [],
     addText: null,
     removeText: null,
-    colGap: `20`,
     select: {
       col: {
         state: `4`,
@@ -24,20 +24,26 @@ export const app = new Vue({
         show: false,
         list: rowgaplist
       },
+      colgap: {
+        state: `20`,
+        active: false,
+        show: false,
+        list: colgaplist
+      },
     }
   },
   methods: {
     rowStyle: function() {
       return {
         marginTop: `-${this.select.rowgap.state}px`,
-        marginLeft: `-${this.colGap}px`
+        marginLeft: `-${this.select.colgap.state}px`
       };
     },
     colStyle: function() {
       const widthNuber = ((1 / Number(this.select.col.state)) * 100);
       return {
         paddingTop: `${this.select.rowgap.state}px`,
-        paddingLeft: `${this.colGap}px`,
+        paddingLeft: `${this.select.colgap.state}px`,
         width: `${widthNuber}%`
       };
     },
@@ -59,7 +65,6 @@ export const app = new Vue({
       }
     },
     remove: function() {
-      console.log(`aa`)
       if(this.cards.length >= 1) {
         const lastItem = this.cards[this.cards.length - 1];
         this.cardtest = [...this.cardtest,lastItem];
