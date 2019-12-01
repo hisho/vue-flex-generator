@@ -42,19 +42,30 @@
               <li class="list--item">
                 <dl class="input">
                   <dt class="input--title"><label for="col">横並びの数</label></dt>
-                  <dd class="input--field"><input id="col" type="number" min="1" max="10" value="3" v-model="col"></dd>
+                  <dd class="input--field">
+                    <div class="select">
+                      <select v-model="col">
+                        <option v-for="item in select.col.collist" v-bind:value="item.id" v-bind:key="item.id">{{ item.id }}</option>
+                      </select>
+                      <span class="select--result" @click="select.col.show = !select.col.show">{{ col }}</span>
+                      <div class="select--modal" v-show="select.col.show" @click="colselect"></div>
+                      <ul class="select--list" v-show="select.col.show">
+                        <li class="select--item" @click="colselect(index)" v-for="(item,index) in select.col.collist" v-bind:key="item.id" :class="{'is-active': index === (col -1)}">{{ item.id }}</li>
+                      </ul>
+                    </div>
+                  </dd>
                 </dl>
               </li>
               <li class="list--item">
                 <dl class="input">
                   <dt class="input--title"><label for="row-gap">縦の溝(px)</label></dt>
-                  <dd class="input--field"><input id="row-gap" type="number" min="1" max="50" value="20" v-model="rowGap"></dd>
+                  <dd class="input--field"><input id="row-gap" type="number" min="0" max="50" value="20" v-model="rowGap"></dd>
                 </dl>
               </li>
               <li class="list--item">
                 <dl class="input">
                   <dt class="input--title"><label for="col-gap">横の溝(px)</label></dt>
-                  <dd class="input--field"><input id="col-gap" type="number" min="1" max="30" value="10" v-model="colGap"></dd>
+                  <dd class="input--field"><input id="col-gap" type="number" min="0" max="30" value="10" v-model="colGap"></dd>
                 </dl>
               </li>
             </ul>

@@ -1,16 +1,23 @@
-import card_data from "../datas/card.json"
+import card_data from "../datas/card.json";
+const collist = [{id: 1},{id: 2},{id: 3},{id: 4},{id: 5},{id: 6},{id: 7},{id: 8},{id: 9},{id: 10}];
 
 export const app = new Vue({
   el: "#app",
   data: {
     cards: card_data,
     cardLength: card_data.length,
-    cardtest: ``,
     addText: null,
     removeText: null,
     col: `4`,
     rowGap: `30`,
     colGap: `20`,
+    select: {
+      col: {
+        active: false,
+        show: false,
+        collist: collist
+      }
+    }
   },
   methods: {
     rowStyle: function() {
@@ -54,6 +61,13 @@ export const app = new Vue({
       } else {
         this.removeText = `これ以上削除できません`;
       }
+    },
+    colselect: function(index) {
+      const isNumber = typeof index === `number`;
+      if (isNumber) {
+        this.col = index + 1;
+      }
+      this.select.col.show = !this.select.col.show;
     }
   }
 });
