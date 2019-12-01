@@ -36,16 +36,12 @@
     text-align: center;
     text-decoration: none;
     letter-spacing: 1px;
-    background-image: linear-gradient(to left, color(bg,green), darken(#24fe41,20%));
-    background-position: 100% 0;
-    background-size: 200% 100%;
+    background: color(bg,green);
     border-radius: 2em;
-    transition: background-position .5s ease-out;
-    @media(hover:hover) {
-      &:hover {
-        color: #fff;
-        background-position: 0 0;
-      }
+    transition: background-color .5s;
+    @include hover {
+      color: color(text,white);
+      background: color(bg,black);
     }
   }
   &--img {
