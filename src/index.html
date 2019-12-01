@@ -22,19 +22,35 @@
         <section class="main--header">
           <h2 class="main--heading">Result</h2>
           <div class="main--content -small">
-            <ul class="row" :style="rowStyle()">
+            <transition-group name="card-list" tag="ul" class="row" :style="rowStyle()">
               <li class="col" v-for="(card, index) in cards" :key="card.title" :style="colStyle()">
                 <section class="card">
                   <h3 class="card--title">{{ card.title }}</h3>
                   <p class="card--text">{{ card.text }}</p>
                   <a class="card--button" :href="card.link" target="_blank" rel="noopener noreferrer">ボタン</a>
-                  <figure class="card--img" :style="background(index)"></figure>
+                  <figure class="card--img" :style="{backgroundImage: `url(assets/img/${card.img})`}"></figure>
                 </section>
               </li>
-            </ul>
+            </transition-group>
           </div>
         </section>
         <div class="main--body">
+          <section class="main--content">
+            <h2 class="main--heading">Element</h2>
+            <ul class="list">
+              <li class="list--item">
+                <button @click="shuffle" class="button" type="button">Shuffle</button>
+              </li>
+              <li class="list--item">
+                <button @click="add" class="button" type="button">Add</button>
+                <p>{{ addText }}</p>
+              </li>
+              <li class="list--item">
+                <button @click="remove" class="button" type="button">Remove</button>
+                <p>{{ removeText }}</p>
+              </li>
+            </ul>
+          </section>
           <section class="main--content">
             <h2 class="main--heading">Entry</h2>
             <ul class="list">

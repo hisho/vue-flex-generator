@@ -1,0 +1,28 @@
+.button {
+  position: relative;
+  width: 100%;
+  padding: .75em 2em;
+  overflow: hidden;
+  font-size: 2rem;
+  font-weight: 400;
+  color: color(text,white);
+  text-align: center;
+  background: color(bg,green);
+  border-radius: 2em;
+  transition: background-color .5s;
+  @include hover {
+    background: color(bg,black);
+  }
+  + p {
+    padding-left: 1em;
+    margin-top: 10px;
+    color: red;
+    &:empty {
+      display: none;
+    }
+    &::before {
+      display: inline-block;
+      content: '※';
+    }
+  }
+}

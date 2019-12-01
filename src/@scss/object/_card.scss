@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -6,6 +7,7 @@
   font-weight: 400;
   text-align: center;
   pointer-events: auto;
+  background: white;
   border: 1px solid color(bd,green);
   &--title {
     order: 2;
@@ -54,4 +56,17 @@
     background-position: center center;
     background-size: cover;
   }
+}
+
+.card-list-move {
+  transition: transform .8s, opacity .5s;
+}
+
+.card-list-enter,
+.card-list-leave-to {
+  opacity: 0;
+}
+
+.card-list-leave-active {
+  transform: translateY(30px);
 }
