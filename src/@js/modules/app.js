@@ -8,14 +8,14 @@ export const app = new Vue({
     cardLength: card_data.length,
     addText: null,
     removeText: null,
-    col: `4`,
     rowGap: `30`,
     colGap: `20`,
     select: {
       col: {
+        state: `4`,
         active: false,
         show: false,
-        collist: collist
+        list: collist
       }
     }
   },
@@ -27,7 +27,7 @@ export const app = new Vue({
       };
     },
     colStyle: function() {
-      const widthNuber = ((1 / Number(this.col)) * 100);
+      const widthNuber = ((1 / Number(this.select.col.state)) * 100);
       return {
         paddingTop: `${this.rowGap}px`,
         paddingLeft: `${this.colGap}px`,
@@ -35,7 +35,7 @@ export const app = new Vue({
       };
     },
     StyleWidth: function() {
-      return Math.floor((1 / Number(this.col)) * 100 * 1e4) / 1e4;;
+      return Math.floor((1 / Number(this.select.col.state)) * 100 * 1e4) / 1e4;;
     },
     shuffle: function () {
       this.cards = _.shuffle(this.cards);
@@ -62,11 +62,9 @@ export const app = new Vue({
         this.removeText = `これ以上削除できません`;
       }
     },
-    colselect: function(index) {
-      const isNumber = typeof index === `number`;
-      if (isNumber) {
-        this.col = index + 1;
-      }
+    colselect: function(item) {
+      const isNumber = typeof item === `number`;
+      if(isNumber) this.select.col.state = item;
       this.select.col.show = !this.select.col.show;
     }
   }
