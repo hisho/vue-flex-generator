@@ -1,14 +1,15 @@
 import card_data from "../datas/card.json";
 const collist = [{id: 1},{id: 2},{id: 3},{id: 4},{id: 5},{id: 6},{id: 7},{id: 8},{id: 9},{id: 10}];
+const rowgaplist = [{id: 0},{id: 5},{id: 10},{id: 15},{id: 20},{id: 25},{id: 30},{id: 35},{id: 40},{id: 45},{id: 50}];
 
 export const app = new Vue({
   el: "#app",
   data: {
     cards: card_data,
     cardLength: card_data.length,
+    cardtest: [],
     addText: null,
     removeText: null,
-    rowGap: `30`,
     colGap: `20`,
     select: {
       col: {
@@ -16,26 +17,32 @@ export const app = new Vue({
         active: false,
         show: false,
         list: collist
-      }
+      },
+      rowgap: {
+        state: `30`,
+        active: false,
+        show: false,
+        list: rowgaplist
+      },
     }
   },
   methods: {
     rowStyle: function() {
       return {
-        marginTop: `-${this.rowGap}px`,
+        marginTop: `-${this.select.rowgap.state}px`,
         marginLeft: `-${this.colGap}px`
       };
     },
     colStyle: function() {
       const widthNuber = ((1 / Number(this.select.col.state)) * 100);
       return {
-        paddingTop: `${this.rowGap}px`,
+        paddingTop: `${this.select.rowgap.state}px`,
         paddingLeft: `${this.colGap}px`,
         width: `${widthNuber}%`
       };
     },
     StyleWidth: function() {
-      return Math.floor((1 / Number(this.select.col.state)) * 100 * 1e4) / 1e4;;
+      return Math.floor((1 / Number(this.select.col.state)) * 100 * 1e4) / 1e4;
     },
     shuffle: function () {
       this.cards = _.shuffle(this.cards);
@@ -52,6 +59,7 @@ export const app = new Vue({
       }
     },
     remove: function() {
+      console.log(`aa`)
       if(this.cards.length >= 1) {
         const lastItem = this.cards[this.cards.length - 1];
         this.cardtest = [...this.cardtest,lastItem];
@@ -62,10 +70,10 @@ export const app = new Vue({
         this.removeText = `これ以上削除できません`;
       }
     },
-    colselect: function(item) {
+    selectEv: function(main,item) {
       const isNumber = typeof item === `number`;
-      if(isNumber) this.select.col.state = item;
-      this.select.col.show = !this.select.col.show;
-    }
+      if(isNumber) main.state = item;
+      main.show = !main.show;
+    },
   }
 });
