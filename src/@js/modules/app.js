@@ -48,13 +48,13 @@ new Vue({
     }
   },
   methods: {
-    rowStyle: function() {
+    rowStyle: function () {
       return {
         marginTop: `-${this.select.rowgap.state}px`,
         marginLeft: `-${this.select.colgap.state}px`
       };
     },
-    colStyle: function() {
+    colStyle: function () {
       const widthNuber = ((1 / Number(this.select.col.state)) * 100);
       return {
         paddingTop: `${this.select.rowgap.state}px`,
@@ -62,14 +62,14 @@ new Vue({
         width: `${widthNuber}%`
       };
     },
-    StyleWidth: function() {
+    StyleWidth: function () {
       return Math.floor((1 / Number(this.select.col.state)) * 100 * 1e4) / 1e4;
     },
     shuffle: function () {
       this.cards = _.shuffle(this.cards);
     },
-    add: function() {
-      if(this.cards.length + 1 <= this.cardLength) {
+    add: function () {
+      if (this.cards.length + 1 <= this.cardLength) {
         const lastItem = this.cardtest[this.cardtest.length - 1];
         this.cardtest.pop();
         this.cards.push(lastItem);
@@ -79,10 +79,10 @@ new Vue({
         this.addText = `これ以上追加できません`;
       }
     },
-    remove: function() {
-      if(this.cards.length >= 1) {
+    remove: function () {
+      if (this.cards.length >= 1) {
         const lastItem = this.cards[this.cards.length - 1];
-        this.cardtest = [...this.cardtest,lastItem];
+        this.cardtest = [...this.cardtest, lastItem];
         this.cards.pop();
         this.addText = null;
         this.removeText = null;
@@ -90,9 +90,9 @@ new Vue({
         this.removeText = `これ以上削除できません`;
       }
     },
-    selectEv: function(main,item) {
+    selectEv: function (main, item) {
       const isNumber = typeof item === `number`;
-      if(isNumber) main.state = item;
+      if (isNumber) main.state = item;
       main.show = !main.show;
     },
   }
