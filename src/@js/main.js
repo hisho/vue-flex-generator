@@ -1,3 +1,2 @@
 import "what-input";
-
-import app from "./modules/app";
+import './modules/app';

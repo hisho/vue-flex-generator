@@ -1,9 +1,24 @@
 import card_data from "../datas/card.json";
-const collist = [{id: 1},{id: 2},{id: 3},{id: 4},{id: 5},{id: 6},{id: 7},{id: 8},{id: 9},{id: 10}];
-const rowgaplist = [{id: 0},{id: 5},{id: 10},{id: 15},{id: 20},{id: 25},{id: 30},{id: 35},{id: 40},{id: 45},{id: 50}];
-const colgaplist = [{id: 0},{id: 5},{id: 10},{id: 15},{id: 20},{id: 25},{id: 30}];
 
-export const app = new Vue({
+/**
+ * [{id: number}]のrange objectを生成する関数
+ * @param length
+ * @param callback
+ * @return {{id: *|number}[]}
+ */
+function rangeObject(length,callback) {
+  return [...Array(length)].map((_, i) => {
+    return {
+      id: callback ? callback(i) : i
+    }
+  })
+}
+
+const collist = rangeObject(10, (index) => index + 1);
+const rowgaplist = rangeObject(11, (index) => index * 5);
+const colgaplist = rangeObject(11, (index) => index * 5);
+
+new Vue({
   el: "#app",
   data: {
     cards: card_data,
